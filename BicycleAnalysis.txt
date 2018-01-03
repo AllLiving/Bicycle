@@ -1,0 +1,25 @@
+该项目致力于实现SIG15_Traffic Prediction in a Bike-Sharing System中的算法并尝试对其进行改进。
+
+AroyaReader:;read/37
+push_back for string???
+
+使用比较原始的站点信息，
+1. 填充聚类内部的点；
+2. 计算流量；
+3. 根据流量获取目的中心；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
