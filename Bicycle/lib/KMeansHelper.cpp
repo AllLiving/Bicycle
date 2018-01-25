@@ -4,6 +4,13 @@ AroyaKMeansHelper::AroyaKMeansHelper() {
 	//nothing to do yet
 }
 
+//clear the buffer
+bool AroyaKMeansHelper::HelperClear() {
+	if (table.size() > 0)	table.clear();
+	if (buffer.size() > 0)	buffer.clear();
+	return true;
+}
+
 //insert table
 void AroyaKMeansHelper::insert(AroyaReader&reader, const char*tableName, const char*myTableName) {
 	if (myTableName == nullptr)myTableName = tableName;
@@ -41,6 +48,40 @@ vector<vector<double>> AroyaKMeansHelper::getData() {
 			item.push_back(buffer[j][i]);
 		}
 		temp.push_back(item);
+	}
+	return temp;
+}
+
+// collect flow information between two station;
+vector<vector<double>> AroyaKMeansHelper::getData(vector<int> &flow) {
+	vector<vector<double>>temp;
+	vector<double>item;
+	int i, j, rows, columns;
+	rows = buffer[0].size();
+	columns = buffer.size();
+	flow.clear();
+
+	for (i = 0; i < rows; i++) {
+		item.clear();
+		for (j = 0; j < columns; j++) {
+			item.push_back(buffer[j][i]);
+		}
+		// delete duplication;
+		bool exist = false;
+		unsigned int tpin;
+		for (tpin = 0; tpin < temp.size(); tpin++) {
+			if (temp[tpin] == item) {
+				exist = true;
+				break;
+			}
+		}
+		if (!exist) {
+			temp.push_back(item);
+			flow.push_back(1);
+		}else {
+			int tmp_flux = ++flow[tpin];
+			flow.push_back(tmp_flux);
+		}
 	}
 	return temp;
 }

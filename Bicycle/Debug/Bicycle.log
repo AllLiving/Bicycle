@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\cedar\desktop\bicycle-master\bicycle\source.cpp(72): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  Bicycle.vcxproj -> C:\Users\Cedar\Desktop\Bicycle-master\Debug\Bicycle.exe

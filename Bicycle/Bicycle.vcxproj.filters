@@ -27,6 +27,21 @@
     <ClInclude Include="lib\Trans.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="lib\GauseSim.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\ReaderHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Date.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Predict.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\weight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\KMeans.cpp">
@@ -42,6 +57,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="lib\Trans.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ReaderHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Date.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Predict.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

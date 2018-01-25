@@ -5,7 +5,17 @@ AroyaKMeans::AroyaKMeans() {
 	bord = 0.05;
 }
 
+void AroyaKMeans::initialize() {
+	if (data.size() > 0)	data.clear();
+	if (centre.size() > 0)	centre.clear();
+	rows = columns = clusters = 0;
+}
+
 void AroyaKMeans::setClusters(const int&clusters_) {
+	if (clusters_ <= 0) {
+		printf("[AroyaKMeans]setClusters:Clusters num is %d\n", clusters_);
+		system("pause");
+	}
 	clusters = clusters_;
 	centre.clear();
 	vector<double>empty;
@@ -15,11 +25,7 @@ void AroyaKMeans::setData(const vector<vector<double>>&yourData) {
 	data.clear();
 	for (unsigned int dpin = 0; dpin < yourData.size(); dpin++) {
 		vector<double> crtv = yourData[dpin];
-		vector<vector<double>>::iterator it;
-		it = find(data.begin(), data.end(), crtv);
-		if (it == data.end()) {
-			data.push_back(crtv);
-		}
+		data.push_back(crtv);
 	}
 	rows = data.size();
 	columns = data[0].size();
@@ -27,6 +33,15 @@ void AroyaKMeans::setData(const vector<vector<double>>&yourData) {
 }
 
 void AroyaKMeans::run() {
+	if (data.size() == clusters) {
+		printf("[AroyaKMeans]run:Data to data, Cluster to cluster.\n");
+	}
+	else if (data.size() < clusters) {
+		printf("[Aroya]run:Data size even less than cluster size.\n");
+		printf("[Aroya]run:Data=%d cnt, cluster=%d cnt.\n", data.size(), clusters);
+		system("pause");
+	}
+
 	int i, j, k;
 	double min;
 	int changed = rows;
@@ -133,11 +148,13 @@ void AroyaKMeans::run() {
 		system("pause");
 #endif
 	}
+	printf("[KMeans]run:Is clustering...\n");
 
 	//Çå³ý¿Õ¼ä
 	for (i = 0; i < clusters; i++)delete[]distance[i];
 	delete[]distance;
 	delete[]thisCluster;
+	printf("[KMeans]run:Clustering done.\n");
 }
 void AroyaKMeans::setBord(const double&t) {
 	bord = t;

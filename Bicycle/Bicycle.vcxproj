@@ -111,15 +111,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="lib\Date.h" />
+    <ClInclude Include="lib\GauseSim.h" />
     <ClInclude Include="lib\KMeans.h" />
     <ClInclude Include="lib\KMeansHelper.h" />
+    <ClInclude Include="lib\Predict.h" />
     <ClInclude Include="lib\Reader.h" />
+    <ClInclude Include="lib\ReaderHelper.h" />
     <ClInclude Include="lib\Trans.h" />
+    <ClInclude Include="lib\weight.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lib\Date.cpp" />
     <ClCompile Include="lib\KMeans.cpp" />
     <ClCompile Include="lib\KMeansHelper.cpp" />
+    <ClCompile Include="lib\Predict.cpp" />
     <ClCompile Include="lib\Reader.cpp" />
+    <ClCompile Include="lib\ReaderHelper.cpp" />
     <ClCompile Include="lib\Trans.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

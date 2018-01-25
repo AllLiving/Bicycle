@@ -12,6 +12,7 @@ using namespace std;
 class AroyaKMeans {
 public:
 	AroyaKMeans();
+	void initialize();
 	void setClusters(const int&clusters);					//设置聚类点数
 	void setData(const vector<vector<double>>&yourData);	//从reader读入信息
 	void run();												//进行聚类
