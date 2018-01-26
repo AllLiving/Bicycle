@@ -8,7 +8,7 @@ using namespace std;
 #define T
 
 int main() {
-	unsigned int GeoClustersNum = 3;
+	unsigned int GeoClustersNum = 10;
 	string centreFileName = "transCentre.csv";
 
 	AroyaReader reader;
@@ -30,7 +30,11 @@ int main() {
 	//KMeans.writeCentre("centre.csv");
 
 	vector<vector<double>> transCentre = KMeans.getCentre();
-
+	KMeans.initialize();
+	KMeans.setData(transCentre);
+	KMeans.setClusters(GeoClustersNum / 2);
+	KMeans.run();
+	transCentre = KMeans.getCentre();
 
 	for (unsigned int itpin = 0; itpin < 5; itpin++) {
 #ifdef T
@@ -56,11 +60,11 @@ int main() {
 			t.writeTransCentre(centreFileName);
 			
 			// Kmeans to stations above;
-			double proportion = forCluster.size() / depart.size();
+			double proportion = (double)forCluster.size() / depart.size();
 			int clusterCnt = GeoClustersNum * proportion;
-			if (clusterCnt < 2)	clusterCnt = 1;
 			KMeans.initialize();
 			KMeans.setData(forCluster);
+			if (clusterCnt == 0)	continue;
 			KMeans.setClusters(clusterCnt);
 			KMeans.run();
 
@@ -70,11 +74,18 @@ int main() {
 				transCentre.push_back(sec_kmeans[cpin]);
 			}
 		}
+		vector<vector<double>> raw_centre = transCentre;
+		KMeans.initialize();
+		KMeans.setData(raw_centre);
+		KMeans.setClusters(raw_centre.size());
+		KMeans.run();
+		KMeans.writeCentre("centre.csv");
+		KMeans.setClusters(GeoClustersNum / 2);
+		KMeans.run();
+		transCentre = KMeans.getCentre();
 #endif // T
 		printf("[Main]:%dth Iterator done.\n", itpin);
 	}
-
-
 	printf("\n\n\n\n\n");	system("pause");
 	return 0;
 }
